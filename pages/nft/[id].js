@@ -31,8 +31,25 @@ import styles from "../../styles/Home.module.css";
           <button onClick={() => router.back()} >Back</button>
 
          <h1> {nft?.metadata.name} </h1>
+
          
-         
+                 {!isLoadingNFT && (  
+          <ThirdwebNftMedia
+           metadata={nft.metadata}
+          width="250px"
+            height="250px"
+           />
+           ) }
+ 
+             <div>
+                <h3>Traits:</h3>
+                {nft?.metadata.attributes.map((attribute, index) => (
+                   <div key={index}>
+                    <strong> {attribute.trait_type}</strong>: {attribute.value}
+                     </div> 
+
+                ) )}
+             </div>   
          
         
 
